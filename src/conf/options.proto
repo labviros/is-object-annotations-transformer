@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package is;
+
+message ObjectAnnotationsTransformerOptions {
+  string broker_uri = 1;
+  string zipkin_host = 2;
+  uint32 zipkin_port = 3;
+  // List of topic from services which publish ObjectAnnotations messages.
+  // Since this service make transformation of tridimensional points, make
+  // sure that these topics published an ObjectAnnotations message 
+  // corresponding to a tridimensional annotation. 
+  repeated string input_topics = 4;
+  // All incoming messages will be published on this 
+  // topic after being trasnformed.
+  string output_topic = 5;
+  // Output referencial frame.
+  int64 frame_id = 6;
+}

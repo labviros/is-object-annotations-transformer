@@ -1,0 +1,12 @@
+{
+  "broker_uri": "amqp://localhost:5672",
+  "zipkin_host": "localhost",
+  "zipkin_port": 9411,
+  "input_topics": [
+    "SkeletonsGrouper.0.Localization",
+    "SkeletonsGrouper.1.Localization",
+    "SkeletonsGrouper.2.Localization"
+  ],
+  "output_topic": "SkeletonsGrouper.Localizations",
+  "frame_id": 1000
+}
