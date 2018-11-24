@@ -52,5 +52,5 @@ else
     echo "!! Alreary have image '$image_dev'"
 fi
 
-docker::build_local sks_heatmap Dockerfile ../../
-docker::push_image sks_heatmap ${remote_tag}
+docker::build_local objs_transformer Dockerfile ../../
+docker::push_image objs_transformer ${remote_tag}

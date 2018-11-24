@@ -11,18 +11,18 @@ class TransformationFetcher:
         self.subscription = Subscription(self.channel)
         self.transformations = {}
 
-    def get_transformation(self, _from, _to):
+    def get_transformation(self, _from, _to, timeout=1.0):
         if _from in self.transformations and _to in self.transformations[_from]:
             return self.transformations[_from][_to]
-        if self._request_transformation(_from, _to):
+        if self._request_transformation(_from, _to, timeout):
             return self.transformations[_from][_to]
         return None
 
-    def _request_transformation(self, _from, _to):
+    def _request_transformation(self, _from, _to, timeout):
         topic = 'FrameTransformation.{}.{}'.format(_from, _to)
         self.subscription.subscribe(topic)
         try:
-            msg = self.channel.consume(timeout=5.0)
+            msg = self.channel.consume(timeout=timeout)
             self.subscription.unsubscribe(topic)
         except:
             self.subscription.unsubscribe(topic)

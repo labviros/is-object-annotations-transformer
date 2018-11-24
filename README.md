@@ -1,7 +1,7 @@
 ObjectAnnotations Transformation Service
 ==================
 
-Changes the coordinate referential frame of [ObjectAnnotations] messages becoming from a list of topics and then publishes to a specific topic.
+Changes the coordinate referential frame of [ObjectAnnotations] messages coming from a list of topics and then publishes to a specific topic.
 
 
 Streams
