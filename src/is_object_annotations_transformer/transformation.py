@@ -19,6 +19,10 @@ class TransformationFetcher:
         return None
 
     def _request_transformation(self, _from, _to, timeout):
+        if _from == _to:
+            self.transformations[_from][_to] = np.eye(4)
+            return True
+
         topic = 'FrameTransformation.{}.{}'.format(_from, _to)
         self.subscription.subscribe(topic)
         try:

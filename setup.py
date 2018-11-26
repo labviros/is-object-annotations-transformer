@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='is_object_annotations_transformer',
-    version='0.0.1',
+    version='0.0.2',
     description='',
     url='http://github.com/labviros/is-object-annotations-transformer',
     author='labviros',

@@ -42,7 +42,7 @@ function docker::rebuild_image {
 
 image_dev='is-object-annotations-transformer/dev'
 docker_user="viros"
-remote_tag='is-object-annotations-transformer:0.0.1'
+remote_tag='is-object-annotations-transformer:0.0.2'
 
 if ! docker::has_image ${image_dev}; then
     docker::build_local ${image_dev} Dockerfile.dev ../../

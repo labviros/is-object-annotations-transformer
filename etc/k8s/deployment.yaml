@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: "0"
-        image: viros/is-object-annotations-transformer:0.0.1
+        image: viros/is-object-annotations-transformer:0.0.2
         command: ["is-object-annotations-transformer"]
         args: ["/conf/options.json"]
         imagePullPolicy: Always
