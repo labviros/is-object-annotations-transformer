@@ -19,22 +19,23 @@ class TransformationFetcher:
         return None
 
     def _request_transformation(self, _from, _to, timeout):
-        if _from == _to:
-            self.transformations[_from][_to] = np.eye(4)
-            return True
+        if _from != _to:
+            topic = 'FrameTransformation.{}.{}'.format(_from, _to)
+            self.subscription.subscribe(topic)
+            try:
+                msg = self.channel.consume(timeout=timeout)
+                self.subscription.unsubscribe(topic)
+            except:
+                self.subscription.unsubscribe(topic)
+                return False
+            tf_pb = msg.unpack(FrameTransformation)
+            transformation = to_np(tf_pb.tf)
+        else:
+            transformation = np.eye(4)
 
-        topic = 'FrameTransformation.{}.{}'.format(_from, _to)
-        self.subscription.subscribe(topic)
-        try:
-            msg = self.channel.consume(timeout=timeout)
-            self.subscription.unsubscribe(topic)
-        except:
-            self.subscription.unsubscribe(topic)
-            return False
-        transformation = msg.unpack(FrameTransformation)
         if _from not in self.transformations:
             self.transformations[_from] = {}
-        self.transformations[_from][_to] = to_np(transformation.tf)
+        self.transformations[_from][_to] = transformation
         return True
 
 
