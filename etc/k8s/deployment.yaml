@@ -14,7 +14,7 @@ data:
         "SkeletonsGrouper.1.Localization",
         "SkeletonsGrouper.2.Localization"
       ],
-      "output_topic": "SkeletonsGrouper.Localizations",
+      "output_topic": "SkeletonsGrouper.3DLocalization",
       "frame_id": 1000
     }
 
